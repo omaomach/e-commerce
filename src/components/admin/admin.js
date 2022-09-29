@@ -1,10 +1,18 @@
 // admin
-import React from "react";
+import React, {useState, useEffect} from "react";
+import AddProduct from "./addProduct";
+import Banner from "./banner";
+import ProductTable from "./productTable";
 
 export default function Admin(){
   
     return(
-        <h1>Admin</h1>
+        <>
+        <Banner />
+        <AddProduct />
+        <ProductTable />
+        </>
+       
     )
 }
 
