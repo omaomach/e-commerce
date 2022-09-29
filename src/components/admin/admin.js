@@ -10,6 +10,7 @@ import {
 import 'antd/dist/antd.css';
 // import the client 
 import {getAllProducts} from './client'; 
+import Banner from "./banner";
 
 export default function Admin(){
 
@@ -69,12 +70,16 @@ export default function Admin(){
 
   
     return(
+        <>
+        <Banner />
         <Container>
         <Table dataSource={products} 
              columns={objects} 
              rowKey='id' 
              />
-     </Container>
+        </Container>
+        </>
+       
     )
 }
 
