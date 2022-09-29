@@ -13,6 +13,6 @@ for using the ant.design component features
 ### products list table
 <img src='dashboard.png' height="400px"/>
 
-### products list table 
+### add products list table 
 <img src='products.png' height="400px"/>
 
