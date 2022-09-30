@@ -1,23 +1,23 @@
 import { Card } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { getAllProducts } from './client';
 const { Meta } = Card;
 
 function ProductDetailsCard(){
-    const [products, setProducts] = useState([])
+    const [productDetails, setProductDetails] = useState([])
     useEffect(()=>{
-        getAllProducts()
-        .then((responce)=>responce.json())
-        .then((data)=>setProDetails(data))
-    },[])
-    console.log(products)
+        fetch('https://fakestoreapi.com/products/')
+            .then(res=>res.json())
+            .then(productDetails=>console.log(productDetails))
+             }, [])
+    console.log(productDetails)
+    
 
     return (
        <div>
-        {products.map((products)=>(
+        {productDetails.map((product)=>(
             <Card
     hoverable
-    key={products.id}
+    key={product.id}
     style={{
       width: 240,
     }}
@@ -28,13 +28,14 @@ function ProductDetailsCard(){
            category={product.category}
            description={product.description}
            price={product.price}
-        />        
-        <button class="buttons">Add to Cart</button>
+        /> 
+        <button style={{background:"red"}} class="buttons">Add to Cart</button>
   </Card>
 ))};
        </div> 
   
-)};
+)
+}
 
 
 export default ProductDetailsCard;
