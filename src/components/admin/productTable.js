@@ -73,7 +73,7 @@ export default function ProductTable(){
          <Container>
          <Table dataSource={products} 
               columns={objects} 
-              rowKey='id' 
+               rowKey='id' 
               />
          </Container>
          
