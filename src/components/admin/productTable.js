@@ -8,7 +8,7 @@ import {
 } from "antd";
 import 'antd/dist/antd.css';
 // import the client 
-import {getAllProducts} from './client'; 
+import {getAllProducts} from '../Global/client'; 
 import Banner from "./banner";
 
 export default function ProductTable(){
