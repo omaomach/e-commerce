@@ -25,7 +25,7 @@ export default function AddressForm() {
 
 	return (
 		<>
-			<h>Shipping address</h>
+			<h2>Shipping address</h2>
 			<form onChange={handleChange}>
 				<div>
 					<TextField
