@@ -25,6 +25,9 @@ function HomeCard(){
         gridTemplateRows: "auto",
         gridGap: "20px",
     };
+    function clickHandler(){
+      alert `added to cart`
+    }
 
     return(
       <>
@@ -54,7 +57,7 @@ function HomeCard(){
               title={product.title}
               description={product.description}
             />
-            <button>Add to Cart</button>
+            <button onClick={clickHandler}>Add to Cart</button>
           </Card>
       
         ))}
