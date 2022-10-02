@@ -7,9 +7,9 @@ import Prd from './components/products/Prd';
 function App() {
   return (
     <>
-      {/* <Prd />
-      <Admin /> */}
-      <ProductDetailsCard />
+       {/* <Prd /> */}
+      {/* <Admin /> */}
+       <ProductDetailsCard />
     </>
   )};
 
