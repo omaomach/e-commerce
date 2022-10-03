@@ -1,17 +1,23 @@
-// import logo from './logo.svg';
-import './App.css';
-<<<<<<< HEAD
-import Admin from './components/admin/admin';
-=======
-// import Admin from './components/admin/ad
->>>>>>> 44494f1e46bcc5f870b8ae57e73def95e97a4bb4
-import Home from './components/home/home';
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Products from "./components/products/products";
+import Admin from "./components/admin/admin";
+import Cart from "./components/cart/cart";
+import Home from "./components/home/home";
+import NavBar from "./components/Global/navbar";
+import Checkout from "./components/checkout/chechout";
 function App() {
-  return (
-   <Home/>
-
-  );
+    return (
+        <Router>
+            <NavBar />
+            <Routes>
+                <Route path="/components/home/home.js" element={<Home />} />
+                <Route path="/components/products/products.js" element={<Products />} />
+                <Route path="/components/admin/admin.js" element={<Admin />} />
+                <Route path="/components/cart/cart.js" element={<Cart />} />
+                <Route path="/components/checkout/Checkout.js" element={<Checkout />} />
+            </Routes>
+        </Router>
+    );
 }
-
 export default App;

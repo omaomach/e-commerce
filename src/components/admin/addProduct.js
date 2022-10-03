@@ -1,10 +1,18 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Col, DatePicker, Drawer, Form, Input, Row, Select, Space } from 'antd';
 import React, { useState } from 'react';
+import fetch from 'unfetch';
 const { Option } = Select;
 
 export default function AddProduct () {
   const [open, setOpen] = useState(false);
+  const [products, setProducts] = useState({
+    title: "", 
+    price: "", 
+    description:"", 
+    image: "", 
+    category:""
+  })
 
   const showDrawer = () => {
     setOpen(true);
@@ -13,6 +21,25 @@ export default function AddProduct () {
   const onClose = () => {
     setOpen(false);
   };
+
+  function addNewProduct(){
+    
+    fetch('/products',{
+            method:"POST",
+            body:JSON.stringify(products)
+        })
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+
+        console.log(products)
+  }
+
+  function handleOnChange(event){
+    const key = event.target.id; 
+    setProducts({...products, [key]:event.target.value})
+    console.log(products)
+  }
+
 
   return (
     <>
@@ -30,13 +57,13 @@ export default function AddProduct () {
         extra={
           <Space>
             <Button onClick={onClose}>Cancel</Button>
-            <Button onClick={onClose} type="primary">
+            <Button onClick={addNewProduct} type="primary">
               Submit
             </Button>
           </Space>
         }
       >
-        <Form layout="vertical" hideRequiredMark>
+        <Form layout="vertical" hideRequiredMark onSubmit={addNewProduct}>
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item
@@ -49,13 +76,17 @@ export default function AddProduct () {
                   },
                 ]}
               >
-                <Input placeholder="Please enter Title" />
+                <Input 
+                id ="title"
+                onChange={handleOnChange}
+                placeholder="Please enter Title" />
               </Form.Item>
             </Col>
             <Col span={12}>
               <Form.Item
                 name="url"
                 label="Url"
+                
                 rules={[
                   {
                     required: true,
@@ -67,6 +98,8 @@ export default function AddProduct () {
                   style={{
                     width: '100%',
                   }}
+                  id='image'
+                  onChange={handleOnChange}
                   addonBefore="http://"
                   addonAfter=".com"
                   placeholder="Please enter image url"
@@ -86,7 +119,10 @@ export default function AddProduct () {
                   },
                 ]}
               >
-                <Input placeholder="Please enter Price" />
+                <Input 
+                id='price'
+                onChange={handleOnChange}
+                placeholder="Please enter Price" />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -100,7 +136,10 @@ export default function AddProduct () {
                   },
                 ]}
               >
-                <Select placeholder="Please choose Category">
+                <Select 
+                id='category'
+                onChange={handleOnChange}
+                placeholder="Please choose Category">
                   <Option value="private">men's clothing</Option>
                   <Option value="public">jewelery</Option>
                   <Option value="public">electronics</Option>
@@ -113,6 +152,8 @@ export default function AddProduct () {
             <Col span={12}>
               <Form.Item
                 name="approver"
+                id='approver'
+                onChange={handleOnChange}
                 label="Approver"
                 rules={[
                   {
@@ -132,6 +173,8 @@ export default function AddProduct () {
             <Col span={12}>
               <Form.Item
                 name="dateTime"
+                id='date'
+                onChange={handleOnChange}
                 label="Stock Period"
                 rules={[
                   {
@@ -153,6 +196,8 @@ export default function AddProduct () {
             <Col span={24}>
               <Form.Item
                 name="description"
+                id='description'
+                onChange={handleOnChange}
                 label="Description"
                 rules={[
                   {
