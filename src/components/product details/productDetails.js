@@ -1,33 +1,34 @@
 import { Card } from 'antd';
 import React, { useEffect, useState } from 'react';
 const { Meta } = Card;
+// import Products from '../products/Products';
 
-function ProductDetailsCard(){
-    const [productDetails, setProductDetails] = useState([])
+function ProductDetails(){
+    const [productDetails, setProductDetails] = useState([]); 
     useEffect(()=>{
-        fetch('https://fakestoreapi.com/products/')
+        fetch('https://fakestoreapi.com/products/2')
             .then(res=>res.json())
             .then(productDetails=>console.log(productDetails))
              }, [])
-    console.log(productDetails)
+    console.log(productDetails);
     
 
     return (
        <div>
-        {productDetails.map((product)=>(
+        {productDetails.map((id, title)=>(
             <Card
     hoverable
-    key={product.id}
+    key={productDetails.id}
     style={{
       width: 240,
     }}
-    cover={<img alt="example" src= {product.image} />}
+    cover={<img alt="example" src= {productDetails.image} />}
   >
    <Meta
-           title= {product.title}
-           category={product.category}
-           description={product.description}
-           price={product.price}
+           title= {productDetails.title}
+           category={productDetails.category}
+           description={productDetails.description}
+           price={productDetails.price}
         /> 
         <button style={{background:"red"}} class="buttons">Add to Cart</button>
   </Card>
@@ -38,4 +39,4 @@ function ProductDetailsCard(){
 }
 
 
-export default ProductDetailsCard;
+export default ProductDetails;
