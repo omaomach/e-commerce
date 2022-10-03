@@ -17,6 +17,7 @@ function HomeCard(){
         width: "100%",
         maxWidth: "1240px",
         margin: "0 auto",
+        paddingTop: "200px",
          
         display: "grid",
          
@@ -24,9 +25,14 @@ function HomeCard(){
         gridTemplateRows: "auto",
         gridGap: "20px",
     };
+    function clickHandler(){
+      alert `added to cart`
+    }
 
     return(
+      <>
         <div style={arrange}>
+          
         {products.map((product)=>(
             <Card
             key={product.key}
@@ -37,6 +43,7 @@ function HomeCard(){
               <img
                 alt="example"
                 src={product.image}
+                style={{height:"300px"}}
               />
             }
             actions={[
@@ -50,9 +57,12 @@ function HomeCard(){
               title={product.title}
               description={product.description}
             />
+            <button onClick={clickHandler}>Add to Cart</button>
           </Card>
+      
         ))}
         </div>
+        </>
 )};
 
 export default HomeCard;

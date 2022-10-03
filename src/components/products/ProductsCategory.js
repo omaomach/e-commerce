@@ -7,7 +7,7 @@ function ProductsCategory() {
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/categories")
       .then((res) => res.json())
-      .then((category) => console.log(category));
+      .then((category) => setProductsCategory(category));
   }, []);
 
   return (
